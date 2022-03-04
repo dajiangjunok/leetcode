@@ -17,7 +17,6 @@
           nums[i+k] = copyNums[i]
       }
   }
-  return nums
 };
 // 想法：
 /**
@@ -29,3 +28,15 @@
  *      否则 将当前位置元素往后移 轮转次数k个位置
  *  
  */
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+ var rotate = function(nums, k) {
+  if(k >= nums.length){
+      k = k % nums.length
+  }
+  nums = nums.slice(nums.length - k,nums.length).concat(nums.slice(0,nums.length - k))
+};
