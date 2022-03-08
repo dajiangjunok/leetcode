@@ -34,8 +34,8 @@ var containsDuplicate = function (nums) {
  * @param {number[]} nums
  * @return {boolean}
  */
- var containsDuplicate = function(nums) {
-  if(nums.length<2) return false
+var containsDuplicate = function (nums) {
+  if (nums.length < 2) return false
   return [...new Set(nums)].length !== nums.length
 };
 
@@ -50,14 +50,16 @@ var containsDuplicate = function (nums) {
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
-  const set = new Set();
-  for (const x of nums) {
-      if (set.has(x)) {
-          return true;
-      }
-      set.add(x);
+var containsDuplicate = function (nums) {
+  // 1.创建hash表
+  const hash = new Set()
+  // 2.循环
+  for (const number of nums) {
+    if (hash.has(number)) {
+      return true
+    } else {
+      hash.add(number)
+    }
   }
-  return false;
+  return false
 };
- 
