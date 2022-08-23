@@ -35,17 +35,16 @@
 // let edu = Symbol("李四");
 // console.log(Symbol.keyFor(edu)); //undefined
 
-
 // 五.遍历属性
 // Symbol 不能使用 for/in、for/of 遍历操作
-// let symbol = Symbol("张三");
+// let symbol = Symbol('张三')
 // let obj = {
-//   name: "李四",
-//   [symbol]: "王五"
-// };
+//   name: '李四',
+//   [symbol]: '王五'
+// }
 
 // for (const key in obj) {
-//   console.log(key); //name
+//   console.log(key) //name
 // }
 
 // for (const key of Object.keys(obj)) {

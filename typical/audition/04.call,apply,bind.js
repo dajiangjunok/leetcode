@@ -11,10 +11,21 @@ function sum(a, b) {
   return a + b + this.c
 }
 
-// 手写call
+/**
+ * 手写call
+ * @param {*} context
+ * @returns
+ * 思路， this永远指向调用它的那个对象。因此myCall中的this是指向调用它的那个
+ * 首先判断调用它想要改变this指向的是不是个函数，如果不是，则抛出错误，因为不是则没有意义
+ * 其次想要改变原有函数调用者中this的指向，那么我们想办法将要将this指向的对象上加上这个函数，然后再通过 （对象.方法）
+ * 来调用这个函数，那么执行的这个方法中的this自然就绑定到了这个对象上了。因此我们只要把原来的this对应的这个函数赋给需要
+ * 改变this的这个对象上，然后执行方法，将后续参数传入，拿到结果后返回即可【当然返回结果前把这个放上去的函数再删除即可】
+ *
+ * apply  和  bind 同理，返回不同而已
+ */
 Function.prototype.myCall = function (context) {
-  if (typeof this !== "function") {
-    throw new Error("Type error");
+  if (typeof this !== 'function') {
+    throw new Error('Type error')
   }
 
   if (!context) {

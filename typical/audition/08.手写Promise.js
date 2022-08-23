@@ -42,8 +42,8 @@ class MyPromise {
 
   then(onFulfilled, onRejected) {
     return new MyPromise((resolve, reject) => {
-      onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : () => { }
-      onRejected = typeof onRejected === 'function' ? onRejected : () => { }
+      onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : () => {}
+      onRejected = typeof onRejected === 'function' ? onRejected : () => {}
 
       if (this.status === MyPromise.PENDING) {
         this.resolveCallBacks.push(onFulfilled)
@@ -66,52 +66,48 @@ console.log('第一步')
 const promise = new MyPromise((resolve, reject) => {
   console.log('第二步')
   setTimeout(() => {
-    resolve('这次一定');
-    reject('下次一定');
-    console.log('第四步');
-  });
-}).then(
-  res => console.log(res),
-  err => console.log(err)
-).then(
-  res => console.log(res),
-  err => console.log(err)
-)
+    resolve('这次一定')
+    reject('下次一定')
+    console.log('第四步')
+  })
+})
+  .then(
+    res => console.log(res),
+    err => console.log(err)
+  )
+  .then(
+    res => console.log(res),
+    err => console.log(err)
+  )
 
-console.log('第三步');
+console.log('第三步')
 
-
-
-
-
-
-
-// 实现Promise.all 
+// 实现Promise.all
 Promise.all = function (promises) {
   return new Promise((resolve, reject) => {
     // 参数可以不是数组，但必须具有 Iterator 接口
-    if (typeof promises[Symbol.iterator] !== "function") {
-      reject("Type error");
+    if (typeof promises[Symbol.iterator] !== 'function') {
+      reject('Type error')
     }
     if (promises.length === 0) {
-      resolve([]);
+      resolve([])
     } else {
-      const res = [];
-      let count = 0;
-      const len = promises.length;
+      const res = []
+      let count = 0
+      const len = promises.length
       for (let i = 0; i < len; i++) {
         //考虑到 promises[i] 可能是 thenable 对象也可能是普通值
         Promise.resolve(promises[i])
-          .then((data) => {
-            res[i] = data;
+          .then(data => {
+            res[i] = data
             if (++count === len) {
-              resolve(res);
+              resolve(res)
             }
           })
-          .catch((err) => {
-            reject(err);
-          });
+          .catch(err => {
+            reject(err)
+          })
       }
     }
-  });
-};
+  })
+}

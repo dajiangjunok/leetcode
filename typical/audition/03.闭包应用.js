@@ -6,47 +6,47 @@
 // count();
 
 // 2.函数每次调用都会创建一个新作用域
-// let site = '后盾人';
+// let site = '后盾人'
 
 // function a() {
-//   let hd = 'houdunren.com';
+//   let hd = 'houdunren.com'
 
 //   function b() {
-//     let cms = 'hdcms.com';
-//     console.log(hd);
-//     console.log(site);
+//     let cms = 'hdcms.com'
+//     console.log(hd)
+//     console.log(site)
 //   }
-//   b();
+//   b()
 // }
-// a();
+// a()
 
 // 3如果子函数被使用时父级环境将被保留
 // function hd() {
-//   let n = 1;
+//   let n = 1
 //   return function () {
-//     let b = 1;
+//     let b = 1
 //     return function () {
-//       console.log(++n);
-//       console.log(++b);
-//     };
-//   };
+//       console.log(++n)
+//       console.log(++b)
+//     }
+//   }
 // }
-// let a = hd()();
-// a(); //2,2
-// a(); //3,3
+// let a = hd()()
+// a() //2,2
+// a() //3,3
 
 // 4.构造函数也是很好的环境例子，子函数被外部使用父级环境将被保留
 // function User() {
-//   let a = 1;
+//   let a = 1
 //   this.show = function () {
-//     console.log(a++);
-//   };
+//     console.log(a++)
+//   }
 // }
-// let a = new User();
-// a.show(); //1
-// a.show(); //2
-// let b = new User();
-// b.show(); //1
+// let a = new User()
+// a.show() //1
+// a.show() //2
+// let b = new User()
+// b.show() //1
 
 // 使用 let/const 可以将变量声明在块作用域中（放在新的环境中，而不是全局中）
 // {
@@ -60,26 +60,24 @@
 
 // for (let i = 0; i < 10; i++) {
 //   setTimeout(() => {
-//     console.log(i);
-//   }, 500);
+//     console.log(i)
+//   }, 500)
 // }
 
-// let arr = [];
+// let arr = []
 // for (var i = 0; i < 10; i++) {
-//   arr.push((() => i));
+//   arr.push(() => i)
 // }
-// console.log(arr[3]()); 
+// console.log(arr[3]())
 
 // 在没有let/const 的历史中使用以下方式产生作用域 让i保存在该自执行函数作用域下
-// let arr = [];
+// let arr = []
 // for (var i = 0; i < 10; i++) {
-//   (function (x) {
-//     arr.push((() => x));
+//   ;(function (x) {
+//     arr.push(() => x)
 //   })(i)
-
 // }
-// console.log(arr[3]()); 
-
+// console.log(arr[3]())
 
 // 二. 闭包
 // 闭包指子函数可以访问外部作用域变量的函数特性，即使在子函数作用域外也可以访问。如果没有闭包那么在处理事件绑定，异步请求时都会变得困难。
@@ -99,26 +97,26 @@
 // 闭包排序
 // let lessons = [
 //   {
-//     title: "媒体查询响应式布局",
+//     title: '媒体查询响应式布局',
 //     click: 89,
 //     price: 12
 //   },
 //   {
-//     title: "FLEX 弹性盒模型",
+//     title: 'FLEX 弹性盒模型',
 //     click: 45,
 //     price: 120
 //   },
 //   {
-//     title: "GRID 栅格系统",
+//     title: 'GRID 栅格系统',
 //     click: 19,
 //     price: 67
 //   },
 //   {
-//     title: "盒子模型详解",
+//     title: '盒子模型详解',
 //     click: 29,
 //     price: 300
 //   }
-// ];
+// ]
 
 // function sort(filed, order) {
 //   return (a, b) => {
@@ -131,18 +129,21 @@
 // }
 
 // const newLessons = lessons.sort(sort('click', 'add'))
-// console.table(newLessons);
-
+// console.table(newLessons)
 
 // 三.闭包带来的内存泄漏问题解决
-// let divs = [{ name: 'kim', age: 11 }, { name: 'john', age: 13 }, { name: 'tom', age: 12 }];
+// let divs = [
+//   { name: 'kim', age: 11 },
+//   { name: 'john', age: 13 },
+//   { name: 'tom', age: 12 }
+// ]
+
 // divs.forEach(function (item) {
 //   const name = item.name
-//   setTimeout(
-//     function () {
-//       console.log(name);
-//       console.log(item);
-//     }
-//     , 1000);
+//
+//   setTimeout(function () {
+//     console.log(name)
+//     console.log(item)
+//   }, 1000)
 //   item = null
-// });
+// })
