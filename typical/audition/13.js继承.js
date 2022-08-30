@@ -13,7 +13,7 @@
 
 // function Son() {}
 // Son.prototype = new Parent() // 核心
-// Son.constructor = Son
+// Son.prototype.constructor = Son
 
 // const test1 = new Son()
 // test1.say() // hhh
