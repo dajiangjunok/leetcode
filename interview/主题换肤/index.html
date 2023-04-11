@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./variable.css">
+  <style>
+    .theme-color .color-card {
+      display: inline-block;
+      width: 50px;
+      height: 10px;
+
+    }
+
+    .theme-color {
+      text-align: left;
+    }
+
+    .title-card {
+      display: inline-block;
+      width: 60px;
+    }
+
+    .theme-color>li:nth-child(1)>i {
+      background: var(--wyj-color-1);
+    }
+
+    .theme-color>li:nth-child(2)>i {
+      background: var(--wyj-color-2);
+    }
+
+    .theme-color>li:nth-child(3)>i {
+      background: var(--wyj-color-3);
+    }
+
+    .theme-color>li:nth-child(4)>i {
+      background: var(--wyj-color-4);
+    }
+
+    .theme-color>li:nth-child(5)>i {
+      background: var(--wyj-color-5);
+    }
+
+    .theme-color>li:nth-child(6)>i {
+      background: var(--wyj-color-6);
+    }
+
+    .theme-color>li:nth-child(7)>i {
+      background: var(--wyj-color-7);
+    }
+
+    .theme-color>li:nth-child(8)>i {
+      background: var(--wyj-color-8);
+    }
+
+    .theme-color>li:nth-child(9)>i {
+      background: var(--wyj-color-9);
+    }
+
+    .theme-color>li:nth-child(10)>i {
+      background: var(--wyj-color-10);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="radioGroup">
+    <input type="radio" id="theme1" name="theme" value="primary" />
+    <label for="theme1">默认</label>
+    <input type="radio" id="theme2" name="theme" value="pink" />
+    <label for="theme2">粉色</label>
+    <input type="radio" id="theme3" name="theme" value="green" />
+    <label for="theme3">绿色</label>
+  </div>
+
+  <div id="box"></div>
+
+
+  <script>
+    const radioGroup = document.getElementById('radioGroup')
+
+    radioGroup.addEventListener('change', (e) => {
+      const themeColor = e.target.value
+      document.documentElement.classList.remove('wyj-theme-default')
+      document.documentElement.classList.remove('wyj-theme-green')
+      document.documentElement.classList.remove('wyj-theme-pink')
+
+      switch (themeColor) {
+        case 'primary':
+          document.documentElement.classList.add('wyj-theme-default')
+          break;
+        case 'pink':
+          document.documentElement.classList.add('wyj-theme-pink')
+          break;
+        case 'green':
+          document.documentElement.classList.add('wyj-theme-green')
+          break;
+        default:
+          document.documentElement.classList.add('wyj-theme-default')
+          break;
+      }
+    })
+    const box = document.getElementById('box')
+    const ul = document.createElement('ul')
+    ul.setAttribute('class', 'theme-color')
+
+    for (let i = 0; i < 10; i++) {
+      const li = document.createElement('li')
+      li.innerHTML = ` <span class="title-card"> 色卡${i}:</span> <i class="color-card"></i>`
+      ul.appendChild(li)
+    }
+    box.appendChild(ul)
+  </script>
+</body>
+
+</html>

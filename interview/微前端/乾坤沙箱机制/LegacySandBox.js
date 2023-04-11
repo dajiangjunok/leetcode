@@ -1,3 +1,5 @@
+// 单例代理盒子
+
 class LegacySandBox {
   currentUpdateValueMap = new Map()
   modifedPropsOriginalValueMapSandBox = new Map()

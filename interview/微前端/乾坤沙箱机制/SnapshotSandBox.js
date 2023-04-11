@@ -1,3 +1,11 @@
+/**
+ * 快照沙箱，主要用于不支持proxy的浏览器(低版本浏览器)
+ * 激活沙箱时候：将window信息存储到windowSnapshot中，如果modifyPropMap中有值，还需要
+ * 还原上次的状态；激活期间，可能修改了window的数据，退出沙箱时将修改过的信息存储到modifyPropMap中
+ * 并且把window还原
+ * 
+ *  new SnapshotSandbox() => 将window的快照信息存储到windowSnapshot中，并且从modifyPropMap中还原上次修改的值   =>   退出前：对windowSnapshot 和 当前window做diff比较，对于变更的信息存到modifyPropMap中，同时将windowSnapshot还原给window(还原进入时候的window)
+ */
 class SnapshotSandbox {
   windowSnapshot = {}
   modifyPropMap = {}

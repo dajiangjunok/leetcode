@@ -1,0 +1,51 @@
+:root {
+  --wyj-color-1: rgb(230, 243, 255);
+  --wyj-color-2: rgb(184, 221, 255);
+  --wyj-color-3: rgb(143, 201, 255);
+  --wyj-color-4: rgb(102, 181, 255);
+  --wyj-color-5: rgb(61, 160, 252);
+  --wyj-color-6: rgb(19, 133, 240);
+  --wyj-color-7: rgb(6, 100, 201);
+  --wyj-color-8: rgb(0, 73, 163);
+  --wyj-color-9: rgb(0, 52, 125);
+  --wyj-color-10: rgb(0, 33, 87);
+}
+
+html.wyj-theme-default {
+  --wyj-color-1: rgb(230, 243, 255);
+  --wyj-color-2: rgb(184, 221, 255);
+  --wyj-color-3: rgb(143, 201, 255);
+  --wyj-color-4: rgb(102, 181, 255);
+  --wyj-color-5: rgb(61, 160, 252);
+  --wyj-color-6: rgb(19, 133, 240);
+  --wyj-color-7: rgb(6, 100, 201);
+  --wyj-color-8: rgb(0, 73, 163);
+  --wyj-color-9: rgb(0, 52, 125);
+  --wyj-color-10: rgb(0, 33, 87);
+}
+
+html.wyj-theme-pink {
+  --wyj-color-1: rgb(255, 240, 244);
+  --wyj-color-2: rgb(255, 204, 219);
+  --wyj-color-3: rgb(255, 204, 219);
+  --wyj-color-4: rgb(230, 110, 154);
+  --wyj-color-5: rgb(217, 69, 128);
+  --wyj-color-6: rgb(203, 32, 105);
+  --wyj-color-7: rgb(166, 18, 87);
+  --wyj-color-8: rgb(128, 8, 68);
+  --wyj-color-9: rgb(89, 1, 48);
+  --wyj-color-10: rgb(51, 0, 29);
+}
+
+html.wyj-theme-green {
+  --wyj-color-1: rgb(223, 237, 235);
+  --wyj-color-2: rgb(197, 224, 221);
+  --wyj-color-3: rgb(152, 212, 206);
+  --wyj-color-4: rgb(111, 199, 193);
+  --wyj-color-5: rgb(74, 186, 182);
+  --wyj-color-6: rgb(42, 173, 173);
+  --wyj-color-7: rgb(26, 132, 135);
+  --wyj-color-8: rgb(14, 91, 97);
+  --wyj-color-9: rgb(5, 53, 59);
+  --wyj-color-10: rgb(2, 18, 20);
+}
