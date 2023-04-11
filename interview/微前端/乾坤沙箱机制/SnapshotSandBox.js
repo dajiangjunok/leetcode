@@ -26,6 +26,7 @@ class SnapshotSandbox {
 
   }
 }
+
 window.city = 'Beijing'
 const snapshotSandbox = new SnapshotSandbox()
 console.log(window.city + '--------01')
@@ -34,4 +35,6 @@ window.city = 'Shanghai'
 console.log(window.city + '--------02')
 snapshotSandbox.inactive()
 console.log(window.city + '--------03')
+snapshotSandbox.active()
+console.log(window.city + '--------04')
 

@@ -132,18 +132,18 @@
 // console.table(newLessons)
 
 // 三.闭包带来的内存泄漏问题解决
-// let divs = [
-//   { name: 'kim', age: 11 },
-//   { name: 'john', age: 13 },
-//   { name: 'tom', age: 12 }
-// ]
+let divs = [
+  { name: 'kim', age: 11 },
+  { name: 'john', age: 13 },
+  { name: 'tom', age: 12 }
+]
 
-// divs.forEach(function (item) {
-//   const name = item.name
-//
-//   setTimeout(function () {
-//     console.log(name)
-//     console.log(item)
-//   }, 1000)
-//   item = null
-// })
+divs.forEach(function (item) {
+  const name = item.name
+
+  setTimeout(function () {
+    console.log(name)
+    console.log(item)
+  }, 1000)
+  item = null
+})

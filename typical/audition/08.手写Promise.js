@@ -42,8 +42,8 @@ class MyPromise {
 
   then(onFulfilled, onRejected) {
     return new MyPromise((resolve, reject) => {
-      onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : () => {}
-      onRejected = typeof onRejected === 'function' ? onRejected : () => {}
+      onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : () => { }
+      onRejected = typeof onRejected === 'function' ? onRejected : () => { }
 
       if (this.status === MyPromise.PENDING) {
         this.resolveCallBacks.push(onFulfilled)
@@ -60,7 +60,6 @@ class MyPromise {
     })
   }
 }
-
 // 用例
 console.log('第一步')
 const promise = new MyPromise((resolve, reject) => {
@@ -72,11 +71,17 @@ const promise = new MyPromise((resolve, reject) => {
   })
 })
   .then(
-    res => console.log(res),
+    res => {
+      console.log(res)
+      console.log(111)
+    },
     err => console.log(err)
   )
   .then(
-    res => console.log(res),
+    res => {
+      console.log(res)
+      console.log(222);
+    },
     err => console.log(err)
   )
 
