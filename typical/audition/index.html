@@ -9,7 +9,16 @@
 </head>
 
 <body>
-  <script src="./测试.js"></script>
+  <!-- <script src="./测试.js"></script> -->
+  <script>
+    const str = `<div><img src="xxxx" /><p> </p><p><b> </b></p></div>`
+    const text = str.replace(/<[^>]+>/g, '')
+    if (text.trim() === '') {
+      console.log('文本为空');
+    } else {
+      console.log('文本不为空');
+    }
+  </script>
 </body>
 
 </html>

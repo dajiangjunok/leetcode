@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 2000px;
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1.捕获按钮的点击行为 -->
+  <!-- 2.捕获页面的滚动行为 -->
+  <div>
+    <button id="myButton">捕获按钮点击行为</button>
+  </div>
+</body>
+
+<script>
+
+  // 1.通用跟踪函数
+  function trackEvent(eventType, details) {
+    console.log(`Event:${eventType}`, details);
+    // 上报
+    // fetch('上报地址url',{
+    //   method:'POST',
+    //   body:JSON.stringify({eventType,details})
+    // })
+  }
+
+  // 捕获按钮点击行为
+  const btn = document.getElementById('myButton')
+  btn.addEventListener('click', (e) => {
+    trackEvent('button_click', {
+      buttonId: 'myButton',
+      timeStamp: Date.now()
+    })
+  })
+
+  // 捕获页面的滚动行为
+  document.addEventListener('scroll', e => {
+    trackEvent('scroll', {
+      scrollY: window.scrollY,
+      timeStamp: Date.now()
+    })
+  })
+
+</script>
+
+</html>

@@ -65,7 +65,7 @@
 // }
 
 // let arr = []
-// for (var i = 0; i < 10; i++) {
+// for (let i = 0; i < 10; i++) {
 //   arr.push(() => i)
 // }
 // console.log(arr[3]())
@@ -73,7 +73,7 @@
 // 在没有let/const 的历史中使用以下方式产生作用域 让i保存在该自执行函数作用域下
 // let arr = []
 // for (var i = 0; i < 10; i++) {
-//   ;(function (x) {
+//   ; (function (x) {
 //     arr.push(() => x)
 //   })(i)
 // }
@@ -132,18 +132,18 @@
 // console.table(newLessons)
 
 // 三.闭包带来的内存泄漏问题解决
-let divs = [
-  { name: 'kim', age: 11 },
-  { name: 'john', age: 13 },
-  { name: 'tom', age: 12 }
-]
+// let divs = [
+//   { name: 'kim', age: 11 },
+//   { name: 'john', age: 13 },
+//   { name: 'tom', age: 12 }
+// ]
 
-divs.forEach(function (item) {
-  const name = item.name
+// divs.forEach(function (item) {
+//   const name = item.name
 
-  setTimeout(function () {
-    console.log(name)
-    console.log(item)
-  }, 1000)
-  item = null
-})
+//   setTimeout(function () {
+//     console.log(name)
+//     console.log(item)
+//   }, 1000)
+//   item = null
+// })

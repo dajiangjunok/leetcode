@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖节流函数</title>
+
+  <style>
+    body {
+      height: 2000px;
+      background-color: antiquewhite;
+    }
+
+    .text-truncate {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      /* 显示行数 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .text-expanded {
+      -webkit-line-clamp: unset;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="debounceBtn">debounce</button>
+    <button class="toggle-btn">长文本溢出</button>
+    <ul class="text text-truncate">
+      <li class="text-expanded">
+        大dhioasdisajiodasuojdosa啊大叔打底衫阿萨德大大dhioasdisajiodasuojdosa啊大叔打底衫阿萨德大大dhioasdisajiodasuojdosa啊大叔打底衫阿萨德大大dhioasdisajiodasuojdosa啊大叔打底衫阿萨德大大dhioasdisajiodasuojdosa啊大叔打底衫阿萨德大
+      </li>
+
+    </ul>
+  </div>
+  <script>
+    // 防抖
+    function debounce(func, delay) {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+
+    // 节流
+    // 一段时间触发一次
+    function throttle(func, time) {
+      let timer
+
+      return function (...args) {
+        if (timer) return
+        timer = setInterval(() => {
+          clearInterval(timer)
+          timer = null
+          return func.apply(this, args)
+        }, time)
+      }
+    }
+
+    // 打印
+    function testConsole(text = 'xxx') {
+      console.log(text)
+    }
+
+    const debounceBtn = document.getElementById('debounceBtn')
+    debounceBtn.addEventListener('click', debounce(() => testConsole('debounce按钮被点击'), 1000))
+
+    document.addEventListener('scroll', throttle(() => testConsole('scroll 被触发'), 2000))
+
+    document.addEventListener('visibilitychange', e => {
+      if (document.visibilityState === 'visible') {
+        console.log('页签活跃');
+      } else {
+        console.log('页签失活');
+      }
+    })
+
+    const toggleButton = document.querySelector('.toggle-btn');
+    const textElement = document.querySelector('.text');
+    toggleButton.addEventListener('click', () => {
+      textElement.classList.toggle('text-expanded');
+    });
+
+    window.addEventListener('load', () => {
+      const resources = performance.getEntriesByType('resource');
+      resources.forEach(resource => {
+        console.log(`${resource.name} 加载耗时: ${resource.duration}ms`);
+      });
+    });
+  </script>
+</body>
+
+</html>

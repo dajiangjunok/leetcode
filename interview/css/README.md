@@ -19,3 +19,83 @@ px 是一个相对单位，相对的是设备像素（device pixel），px 会�
 `DPR = 设备像素 / 设备独立像素.    ` 当设备像素比为 1:1 时，使用 1（1×1）个设备像素显示 1 个 CSS 像素，当设备像素比为 2:1 时，使用 4（2×2）个设备像素显示 1 个 CSS 像素
 
 - ppi 每英寸像素，表示每英寸所包含的像素点数目，更确切的说法应该是像素密度。数值越高，说明屏幕能以更高密度显示图像
+
+#### css BEM 命名方式
+
+BEM 是一种 css 命名规范， B 代表 block E 代表 element M 代表 modifier
+
+- `-` 中划线 ：仅作为连字符使用，表示某个块或者某个子元素的多单词之间的连接记号。
+- `__` 双下划线：双下划线用来连接块和块的子元素
+- `_` 单下划线：单下划线用来描述一个块或者块的子元素的一种状态
+
+**block 写法 bem 写法和常规写法基本一致**
+
+**element 元素写法则不同**
+
+```html
+/* 常规写法 */
+<ul class="list">
+  <li class="item">Pricing</li>
+  <li class="item">Contact</li>
+</ul>
+
+/* BEM写法 */
+<ul class="list">
+  <li class="list__item">Pricing</li>
+  <li class="list__item">Contact</li>
+</ul>
+
+<style>
+  /* 常规写法 */
+  .list {
+  }
+  .list .item {
+  }
+
+  /* BEM写法 */
+  .list {
+  }
+  .list__item {
+  }
+</style>
+```
+
+**modifier 修饰符写法**
+
+```html
+/* 常规写法 */
+<ul class="list">
+  <li class="item">Pricing</li>
+  <li class="item">Contact</li>
+</ul>
+
+/* BEM写法 */
+<ul class="list">
+  <li class="list__item_active">Pricing</li>
+  <li class="list__item">Contact</li>
+</ul>
+
+<style>
+  /* 常规写法 */
+  .list {
+  }
+  .list .item {
+  }
+  .list .item.active {
+  }
+
+  /* BEM写法 */
+  .list {
+  }
+  .list__item {
+  }
+  .list__item_active {
+  }
+</style>
+```
+
+##### BEM写法优势
+
+- 摆脱特异性的困扰
+- 修复继承问题
+- 停止担心命名

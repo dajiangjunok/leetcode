@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div>1.页面加载时间监控</div>
+  <div>2.API调用耗时监控</div>
+
+</body>
+
+<script>
+
+  // 1.通用跟踪函数
+  function trackEvent(eventType, details) {
+    console.log(`Event:${eventType}`, details);
+    // 上报
+    // fetch('上报地址url',{
+    //   method:'POST',
+    //   body:JSON.stringify({eventType,details})
+    // })
+  }
+
+  // 页面加载时间监控
+  window.addEventListener('load', e => {
+    const pageLoadTime = performance.now()
+    trackEvent('page_load', {
+      duration: pageLoadTime
+    })
+  })
+
+  function apiPerformance() {
+    const start = performance.now()
+
+    fetch('https://cdn.cookielaw.org/consent/1be0fc8f-627a-4f3a-a13f-a4d11e467d2a/1be0fc8f-627a-4f3a-a13f-a4d11e467d2a.json')
+      .then(res => res.json())
+      .then(data => {
+        const duration = performance.now() - start
+
+        trackEvent('api_call', {
+          duration,
+          endpoint: 'https://cdn.cookielaw.org/consent/1be0fc8f-627a-4f3a-a13f-a4d11e467d2a/1be0fc8f-627a-4f3a-a13f-a4d11e467d2a.json'
+        })
+      })
+  }
+
+  apiPerformance()
+
+</script>
+
+</html>
